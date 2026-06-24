@@ -72,6 +72,7 @@ export default function DashboardPage() {
       .gte('date', start)
       .lte('date', end)
       .order('date', { ascending: false })
+      .order('created_at', { ascending: false })
 
     if (!error && data) {
       setTransactions(data)

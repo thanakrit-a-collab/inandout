@@ -183,8 +183,15 @@ export default function AdminPage() {
       count: incomeGrouped[source].count,
     }))
 
-    // Personal transactions ordered by date desc
-    const sortedTxs = [...userTxs].sort((a, b) => new Date(b.date) - new Date(a.date))
+    // Personal transactions ordered by date desc and created_at desc
+    const sortedTxs = [...userTxs].sort((a, b) => {
+      const dateA = new Date(a.date)
+      const dateB = new Date(b.date)
+      if (dateA.getTime() !== dateB.getTime()) {
+        return dateB - dateA
+      }
+      return new Date(b.created_at) - new Date(a.created_at)
+    })
 
     return {
       email: user.email,
