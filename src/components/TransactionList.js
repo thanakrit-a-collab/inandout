@@ -46,7 +46,7 @@ export default function TransactionList({ transactions = [] }) {
         <div className="h-px flex-1 ml-3 bg-gradient-to-r from-[#f9a8d4]/40 to-transparent" />
       </div>
 
-      <div className="space-y-2">
+      <div className="space-y-2 max-h-[380px] overflow-y-auto pr-1">
         {transactions.map((tx, i) => {
           const isIncome = tx.type === 'income'
           return (
